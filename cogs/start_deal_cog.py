@@ -24,9 +24,9 @@ class DealCog(commands.Cog):
         return response.json()
     @commands.command()
     async def deal(self, ctx, member : Member, *, rest):
-        #if member.id == ctx.author.id:
-        #=#    await ctx.send('You cannot middleman a deal you have made with yourself.')
-        #    return
+        if member.id == ctx.author.id:
+            await ctx.send('You cannot middleman a deal you have made with yourself.')
+            return
         guild = ctx.guild
         print(rest)
         auth = ctx.author
