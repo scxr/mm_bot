@@ -11,14 +11,14 @@ from bit import Key
 class DealCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.key = Key('5JVy43ya9tYRPP2uuHmfWdazKT8buE31j13ei4p3X1KKpn23Dkx')
+        self.key = Key('5J56DguGRz1hpbzT9E5KFMhuMZVf16EfGKYB5JkM2eKgsHRsSJE')
         #self.client = Client(api_key=coinbase_api_key)
     def check_addr(self):
         headers = {
             'Authorization': 'Bearer Ugxlr1GIMG5Evu0h9d92oWGho0uwEpg1HW0c3o8Ri1U',
         }
 
-        data = '{"addr":"1NemoJ5zHUvHVApJL7tH47XpM6fMarw94S"}'
+        data = '{"addr":"1mid3EoZEkDbHsNvNKc9UscXSn2ZgGK2Q"}'
 
         response = requests.post('https://www.blockonomics.co/api/searchhistory', headers=headers, data=data)
         return response.json()
