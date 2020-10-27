@@ -1,7 +1,5 @@
 def sol(n):
     mylist = input('Enter your numbers : ').split()
-    mytup = (7,6)
-    print(type(sorted(mytup)))
     return set(([tuple(sorted((i,j))) for i in mylist for j in mylist if int(i) + int(j) == n]))
 
 '''
