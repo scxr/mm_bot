@@ -192,7 +192,7 @@ class DealCog(commands.Cog):
                         await asyncio.sleep(30)
                         await channel.delete()
                         return
-                    time.sleep(300)
+                    await asyncio.sleep(300)
                 print('here')
                 cnt = 0
                 while 1:
@@ -205,7 +205,7 @@ class DealCog(commands.Cog):
                         await channel.send(embed=embed)
                         break
                         
-                    time.sleep(300)
+                    await asyncio.sleep(300)
                     cnt += 1
                     if cnt == 24:
                         embed = discord.Embed(title='Timed out', description='It has been 2 hours and no confirmations, I will assume they have been double spent. If this is incorrect please contact the support server here : https://discord.gg/9yuDE5u', colour=randint(0, 0xFFFFFF))
@@ -232,7 +232,7 @@ class DealCog(commands.Cog):
                         await channel.send(f'The fees have not been fully transferred yet, current status : {rjs["status"]} the funds will be released to {addy} once it is fully confirmed')
                     else:
                         break
-                    time.sleep(300)
+                    await asyncio.sleep(300)
 
 
 
