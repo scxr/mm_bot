@@ -1,7 +1,7 @@
 from discord.ext import commands
 
 bot = commands.Bot(command_prefix='!')
-TOKEN = 'NzY4MTgzOTA0NTIzNjQ5MDQ0.X48xAw.iSCaEJYuGej7mkyAz44PinaIP6g'
+TOKEN = 'NzY4MTgzOTA0NTIzNjQ5MDQ0.X48xAw.zR3ancojzsaPGsBDfecOmnCoOtM'
 cogs_to_add = [
     'cogs.events_watch_cog',
     'cogs.start_deal_cog',
