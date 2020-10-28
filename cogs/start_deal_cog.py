@@ -36,7 +36,7 @@ class DealCog(commands.Cog):
             await ctx.send(f'{rest} is not a valid number')
             return
         overwrites = {
-            guild.default_role: discord.PermissionOverwrite(read_messages=False),
+            guild.default_role : discord.PermissionOverwrite(read_messages=False),
             guild.me: discord.PermissionOverwrite(read_messages=True),
             member: discord.PermissionOverwrite(read_messages=True)
         }
@@ -48,7 +48,10 @@ class DealCog(commands.Cog):
         except asyncio.TimeoutError:
             await ctx.send('User failed to respond within 60 seconds. Closing deal')
         if msg.content.lower() == 'confirm':
-            channel = await guild.create_text_channel(f'{member.id+ctx.author.id}', overwrites=overwrites)
+            channel = await guild.create_text_channel(f'{member.id+ctx.author.id}')
+            await channel.set_permissions(ctx.guild.get_role(ctx.guild.id), send_messages=False, read_messages=False)
+            await channel.set_permissions(auth, send_messages=True, read_messages=True)
+            await channel.set_permissions(member, send_messages=True, read_messages=True)
             await ctx.send(f'Channel has been setup, please go to {channel.mention}', delete_after=60)
             deal_embed = discord.Embed(title='Deal setup', description=f'A deal for ${rest} has been setup, if you are happy for me to hold this in escrow react with ✅ to cancel this deal please react with ❌', colour=randint(0, 0xffffff))
             sent = await channel.send(embed=deal_embed)
@@ -131,8 +134,7 @@ class DealCog(commands.Cog):
                     return user.id != 768183904523649044
                 response = await self.bot.wait_for('reaction_add',check=check)
                 if response[0].emoji == '🅰️':
-                    print(resp)
-                    print(resp['fastestFee'])
+
                     fee = resp['fastestFee']
                 elif response[0].emoji == '🅱️':
                     fee = resp['halfHourFee']
